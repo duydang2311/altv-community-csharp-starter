@@ -5,6 +5,9 @@ resources/server/*
 altv-server
 altv-voice-server
 altv-crash-handler
+altv-server.exe
+altv-voice-server.exe
+altv-crash-handler.exe
 AltV.Net.Host.dll
 AltV.Net.Host.runtimeconfig.json
 server.log

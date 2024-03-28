@@ -1,7 +1,7 @@
 using AltV.Net;
 using AltV.Net.Async;
-using AltV.Net.Elements.Entities;
 using Com.Server.AltV.Features.Accounts.Abstractions;
+using Com.Server.AltV.Features.Characters.Abstractions;
 using Com.Shared.AltV.Dtos;
 using Com.Shared.AltV.Interfaces;
 using Marten;
@@ -18,12 +18,17 @@ public sealed class ExampleScript : IStartup
     }
 
     [AsyncScriptEvent(ScriptEventType.PlayerConnect)]
-    private async Task OnPlayerConnectAsync(IPlayer player)
-    {
+    private async Task OnPlayerConnectAsync(ICharacter character)
+    {   //                                  ^^^^^^^^^^
+        // Feature slices are not supposed to reference each other directly in vertical slice architecture.
+        // There are many ways to solve this, my way is to put common shared code in Abstractions namespace of each slice
+        // It can be a folder in a slice for now, but you can easily move it to a separate project without any further changes.
+        // Pay attention to how ICharacter is put in Characters.Abstractions namespace
+
         // Example code for query an account using player's name
         await using var session = store.LightweightSession();
         var account = await session.Query<Account>()
-            .Where(x => x.Name == player.Name)
+            .Where(x => x.Name == character.Name)
             .FirstOrDefaultAsync()
             .ConfigureAwait(false);
 
@@ -33,7 +38,7 @@ public sealed class ExampleScript : IStartup
         {
             account = new Account
             {
-                Name = player.Name
+                Name = character.Name
             };
             session.Store(account);
             await session.SaveChangesAsync().ConfigureAwait(false);
@@ -41,7 +46,7 @@ public sealed class ExampleScript : IStartup
 
         // Example code for sending a DTO to client using MValue adapter
         // Check AccountDto definition for how it was implemented
-        player.Emit("account.dto", new AccountDto
+        character.Emit("account.dto", new AccountDto
         {
             Id = account.Id.ToString(),
             Name = account.Name

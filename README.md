@@ -1,6 +1,6 @@
 # Starter project for alt:V C\#
 
-The starter project provides with a simple setup of [.NET generic host](https://learn.microsoft.com/en-us/dotnet/core/extensions/generic-host), [Marten](https://martendb.io/) database, a project structure inspired by [Vertical Slice Architecture](https://www.jimmybogard.com/vertical-slice-architecture/) and some simple code examples.
+The starter project provides a simple setup of [.NET generic host](https://learn.microsoft.com/en-us/dotnet/core/extensions/generic-host), [Marten](https://martendb.io/) database, a project structure inspired by [Vertical Slice Architecture](https://www.jimmybogard.com/vertical-slice-architecture/) and some simple code examples.
 
 ## Development
 

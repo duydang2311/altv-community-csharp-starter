@@ -6,6 +6,8 @@ The starter project provides a simple setup of [.NET generic host](https://learn
 
 This project uses [just](https://github.com/casey/just) (a command runner) for running some frequently used commands. I created a [justfile](https://github.com/duydang2311/altv-community-csharp-starter/blob/main/justfile) with a set of default recipes.
 
+*But you don't have to use it. Feel free to use your favourite way to run commands/scripts.*
+
 ### Download or update alt:V server files
 
 Execute `update` recipe using just:

@@ -1,4 +1,5 @@
 using AltV.Net.Client.Async;
+using Com.Shared.AltV.Helpers;
 
 namespace Com.Client.AltV;
 
@@ -6,7 +7,7 @@ public sealed class ClientResource : AsyncResource
 {
     public override void OnStart()
     {
-        throw new NotImplementedException();
+        ResourceHelper.RegisterAdapters();
     }
 
     public override void OnStop()

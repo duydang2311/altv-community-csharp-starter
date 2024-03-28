@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AltV.Community.MValueAdapters.Generators" />
     <PackageReference Include="AltV.Net.Shared" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
   </ItemGroup>

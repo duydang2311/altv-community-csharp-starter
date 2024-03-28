@@ -1,0 +1,15 @@
+resources/client/*
+resources/server/*
+!resources/client/resource.toml
+!resources/server/resource.toml
+altv-server
+altv-voice-server
+altv-crash-handler
+AltV.Net.Host.dll
+AltV.Net.Host.runtimeconfig.json
+server.log
+update.json
+cache/
+data/
+modules/
+.server-crashes-cache/

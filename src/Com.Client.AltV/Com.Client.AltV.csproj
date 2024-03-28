@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AltV.Net.Client" />
+    <PackageReference Include="AltV.Net.Client.Async" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings*.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AllOutputFiles Include="$(OutputPath)\publish\**\*.*" />
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="publish">
+    <PropertyGroup>
+      <TargetLocation>..\..\resources\client\bin</TargetLocation>
+    </PropertyGroup>
+    <Copy Condition=" '$(TargetLocation)' != '' " SourceFiles="@(AllOutputFiles)" DestinationFolder="$(TargetLocation)\%(RecursiveDir)" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

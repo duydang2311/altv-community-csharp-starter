@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="AltV.Net" Version="16.0.11" />
+    <PackageVersion Include="AltV.Net.Async" Version="16.0.11" />
+    <PackageVersion Include="AltV.Net.Client" Version="16.0.11" />
+    <PackageVersion Include="AltV.Net.Client.Async" Version="16.0.11" />
+    <PackageVersion Include="AltV.Net.Shared" Version="16.0.11" />
+    <PackageVersion Include="AsyncAwaitBestPractices" Version="7.0.0" />
+    <PackageVersion Include="Marten" Version="7.5.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Options.DataAnnotations" Version="8.0.0" />
+  </ItemGroup>
+</Project>

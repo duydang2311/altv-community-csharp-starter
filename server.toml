@@ -1,0 +1,18 @@
+name = 'alt:V Community C# Starter'
+port = 7788
+players = 128
+# password = 'ultra-password'
+announce = false
+# token = 'YOUR_TOKEN'
+gamemode = 'Freeroam'
+website = 'example.com'
+language = 'en'
+description = 'alt:V Sample Server'
+modules = ['csharp-module']
+resources = ['server']
+debug = true
+spawnAfterConnect = false
+enableSyncedMetaData = true
+
+[csharp-module]
+disableDependencyDownload = true

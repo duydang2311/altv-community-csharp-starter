@@ -6,7 +6,7 @@ public static partial class ServiceCollectionExtensions
 {
     public static IServiceCollection AddAccountFeatures(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddStartup<ExampleScript>();
+        serviceCollection.AddHostedService<ExampleScript>();
         return serviceCollection;
     }
 }

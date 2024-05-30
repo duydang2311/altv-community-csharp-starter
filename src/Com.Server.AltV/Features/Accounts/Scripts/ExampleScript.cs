@@ -3,18 +3,22 @@ using AltV.Net.Async;
 using Com.Server.AltV.Features.Accounts.Abstractions;
 using Com.Server.AltV.Features.Characters.Abstractions;
 using Com.Shared.AltV.Dtos;
-using Com.Shared.AltV.Interfaces;
 using Marten;
+using Microsoft.Extensions.Hosting;
 
 namespace Com.Server.AltV.Features.Accounts.Scripts;
 
-public sealed class ExampleScript : IStartup
+public sealed class ExampleScript(IDocumentStore store) : IHostedService
 {
-    private readonly IDocumentStore store;
-    public ExampleScript(IDocumentStore store)
+    public Task StartAsync(CancellationToken cancellationToken)
     {
-        this.store = store;
         Alt.RegisterEvents(this);
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
     }
 
     [AsyncScriptEvent(ScriptEventType.PlayerConnect)]

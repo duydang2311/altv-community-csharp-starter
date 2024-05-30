@@ -13,6 +13,7 @@ namespace Com.Server.AltV;
 public sealed class ServerResource : AsyncResource
 {
     private readonly IHost host;
+
     public ServerResource()
     {
         var builder = Host.CreateApplicationBuilder(new HostApplicationBuilderSettings
@@ -30,22 +31,28 @@ public sealed class ServerResource : AsyncResource
 
     public override void OnStart()
     {
-        ResourceHelper.RegisterAdapters();
-        host.RunAsync().SafeFireAndForget((exception) =>
-        {
-            Alt.LogError(exception.ToString());
-            Alt.StopResource(Alt.Resource.Name);
-        });
+        StartAsync().Wait();
     }
 
     public override void OnStop()
     {
-        host.StopAsync().Wait();
-        host.Dispose();
+        StopAsync().Wait();
     }
 
     public override IEntityFactory<IPlayer> GetPlayerFactory()
     {
         return host.Services.GetRequiredService<ICharacterFactory>();
+    }
+
+    private async Task StartAsync()
+    {
+        ResourceHelper.RegisterAdapters();
+        await host.StartAsync().ConfigureAwait(false);
+    }
+
+    private async Task StopAsync()
+    {
+        await host.StopAsync();
+        host.Dispose();
     }
 }
